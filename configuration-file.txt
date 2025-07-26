@@ -1,0 +1,10 @@
+server {
+    listen 80;
+    server_name _;
+
+    location /student/ {
+        proxy_pass http://<App-EC2-PRIVATE-IP>:8080/student/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
